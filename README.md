@@ -30,7 +30,7 @@ endwhile;
 wp_reset_postdata();
 ```
 
-####Loop Section:
+#####Loop Section:
 ```php
 $args = array(
     'post_type' => 'CUSTOM_POST_TYPE_NAME', //'post'
