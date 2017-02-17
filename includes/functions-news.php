@@ -37,5 +37,5 @@ function order_misc_posts_by_date( $posts ) {
     $posts_instance = $posts;
     usort( $posts_instance, 'compare_order_posts_by_date' );
 
-    return $posts;
+    return $posts_instance;
 }
