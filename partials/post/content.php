@@ -1,0 +1,3 @@
+<?php
+// CONTENT DEFAULT
+?>
