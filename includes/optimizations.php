@@ -32,3 +32,15 @@ remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+// on call js add #async ex: jquery.min.js#async
+function async_scripts( $url )
+{
+    if ( strpos( $url, '#async') === false )
+        return $url;
+    else if ( is_admin() )
+        return str_replace( '#async', '', $url );
+    else
+        return str_replace( '#async', '', $url )."' async='async";
+}
+add_filter( 'clean_url', 'async_scripts', 11, 1 );

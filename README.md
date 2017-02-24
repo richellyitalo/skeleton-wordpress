@@ -39,10 +39,10 @@ $args = array(
 );
 $posts = get_posts( $args );
 if ( $posts ) {
-    foreach ( $posts as $post ) : setup_postdata( $post ) {
+    foreach ( $posts as $post ) : setup_postdata( $post );
         the_title();
         the_content();
-    }
+    endforeach;
     wp_reset_postdata();
 }
 ```
