@@ -87,9 +87,14 @@ function strip_shortcode_gallery( $content ) {
     return $content;
 }
 
+
 function get_ids_from_gallery( $content ) {
     preg_match( '/\[gallery.*ids=.(.*).\]/', $content, $ids );
     $ids = explode( ",", $ids[1] );
+
+    if ( empty($ids[1] ) ) {
+        return null;
+    }
 
     return $ids;
 }
