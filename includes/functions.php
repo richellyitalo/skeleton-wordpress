@@ -98,3 +98,37 @@ function get_ids_from_gallery( $content ) {
 
     return $ids;
 }
+
+
+/**
+ * Retorna resumo com limite determinado e seu caractere final
+ * @limit  int     quantidade de palavras a retornar como resumo
+ * @max    string  caracteres para adicionar ao final do resumo
+ */
+function the_excerpt_limit($limit, $max = '') {
+    $excerpt = get_the_excerpt_limit( $limit, $max );
+    $excerpt =  sprintf('<p>%s</p>', strip_tags($excerpt));
+
+    echo $excerpt;
+
+}
+
+function get_the_excerpt_limit( $limit, $max = '' ) {
+
+    $excerpt = explode(' ', get_the_excerpt(), $limit);
+
+    if (count($excerpt) >= $limit) {
+        array_pop($excerpt);
+        if ($max) {
+            $excerpt = implode(" ", $excerpt) . $max;
+        } else if ($max == false) {
+            $excerpt = implode(" ", $excerpt) . '.';
+        }
+    } else {
+        $excerpt = implode(" ", $excerpt);
+    }
+
+    $excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
+
+    return $excerpt;
+}
