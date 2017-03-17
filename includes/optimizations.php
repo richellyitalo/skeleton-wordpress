@@ -1,6 +1,18 @@
 <?php
 define('FS_METHOD','direct');
 
+// Auto Updates
+add_filter( 'allow_major_auto_core_updates', '__return_true', 1 );
+
+// Enable minor version updates
+add_filter( 'allow_minor_auto_core_updates', '__return_true', 1 );
+
+//Enable Plugin updates
+add_filter( 'auto_update_plugin', '__return_true', 1 );
+
+//Enable Themes updates
+// add_filter( 'auto_update_theme', '__return_true', 1 );
+
 // Auto Save
 define('AUTOSAVE_INTERVAL', 3000);
 define('WP_DEBUG', true);
