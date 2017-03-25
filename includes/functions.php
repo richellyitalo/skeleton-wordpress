@@ -35,8 +35,10 @@ function split_title_middle ( $title ) {
     return $new_title;
 }
 
-function get_bannerize_images ( $group = '', $single = false, $limit = 3 ) {
+
+function get_bannerize_images ( $group = '', $single = false, $limit = 3, $random = false ) {
     global $wpdb;
+    $order = 'sorter';
 
     if ( ! function_exists ( 'wp_bannerize'))
         return false;
@@ -46,10 +48,13 @@ function get_bannerize_images ( $group = '', $single = false, $limit = 3 ) {
     if ( $single )
         $limit = 1;
 
+    if ( $random )
+        $order = 'RAND()';
+
     $sql = "SELECT * FROM `" . $prefix . "bannerize` WHERE `enabled` = '1' AND `trash` = '0' AND " .
         "(`maximpressions` = 0 OR `impressions` < `maximpressions`) AND " .
         "( (`start_date` < NOW() OR `start_date` = '0000-00-00 00:00:00' ) AND (`end_date` > NOW() OR `end_date` = '0000-00-00 00:00:00') )
-                 AND `group` = '%s' ORDER BY RAND() LIMIT $limit";
+                 AND `group` = '%s' ORDER BY " . $order . " LIMIT $limit";
 
     if ( $single )
         $banner = $wpdb->get_row( $wpdb->prepare( $sql, $group ) );
