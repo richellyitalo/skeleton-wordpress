@@ -73,3 +73,12 @@ function sa_sanitize_spanish_chars ( $filename ) {
     return remove_accents( $filename );
 }
 add_filter( 'sanitize_file_name', 'sa_sanitize_spanish_chars', 10 );
+
+// Session
+// add_action('init', 'start_session_wp', 1);
+
+// function start_session_wp() {
+//     if ( session_id() == '' ) {
+//         session_start();
+//     }
+// }
