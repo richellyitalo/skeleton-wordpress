@@ -52,6 +52,14 @@ function theme_scripts() {
 
     //wp_register_script( 'theme-script',  get_theme_file_uri( '/dist/js/all.min.js' ), array(), '1.0', true );
     //wp_enqueue_script( 'theme-script' );
+
+    // $vars = array(
+    //     'homeUrl' => esc_url( home_url('/') ),
+    //     'directoryUri' => get_template_directory_uri(),
+    //     'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+    //     'ajaxNonce'=> wp_create_nonce( SECURITY_CODE )
+    // );
+    // wp_localize_script( 'theme-script', 'VARS', $vars );
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
 
@@ -59,3 +67,9 @@ function wpdocs_excerpt_more( $more ) {
     return '';
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+// remove especial characteres
+function sa_sanitize_spanish_chars ( $filename ) {
+    return remove_accents( $filename );
+}
+add_filter( 'sanitize_file_name', 'sa_sanitize_spanish_chars', 10 );
