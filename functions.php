@@ -10,8 +10,12 @@ require_once get_parent_theme_file_path( 'includes/functions.php' );
 require_once get_parent_theme_file_path( 'includes/custom-posts.php' );
 require_once get_parent_theme_file_path( 'includes/custom-fields.php' );
 
+//require_once get_parent_theme_file_path( 'includes/walkers/wp-bootstrap-navwalker.php' );
+
 //require_once get_parent_theme_file_path( 'includes/functions-news.php' );
 //require_once get_parent_theme_file_path( 'includes/plugins/facebook.php' );
+
+//require_once get_parent_theme_file_path( 'includes/filters.php' );
 
 /*
  * Theme setup
@@ -20,7 +24,7 @@ function theme_setup() {
     add_theme_support( 'menus' );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
-    add_theme_support( 'post-formats', array( 'gallery' ));
+    add_theme_support( 'po-formats', array( 'gallery' ));
 
     register_nav_menus( array(
         'main'      => 'Menu Principal', // MENU 1
